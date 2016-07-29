@@ -1,5 +1,5 @@
-# soccerama-pro-client
-Client Library for Soccerama.pro API
+# soccerama-pro-client 
+Client Library for Soccerama.pro V1.1 API
 
 ## Objectif
 Cette bibliotheque à pour but de faciliter l'utilisation de l'API Soccerama.pro
