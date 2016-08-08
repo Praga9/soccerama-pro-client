@@ -19,8 +19,8 @@ public abstract class SocceramaProxy {
 	protected void waitBeforeNextCall() {
 		synchronized (this) {
 			try {
-				while (System.currentTimeMillis() - lastCall < (HOUR_IN_SECOND / CALL_BY_HOUR)) {
-					TimeUnit.SECONDS.sleep(1);
+				while (System.currentTimeMillis() - lastCall <= (HOUR_IN_SECOND / CALL_BY_HOUR)) {
+					TimeUnit.SECONDS.sleep(10);
 					// System.out.println(".");
 				}
 			} catch (final InterruptedException e) {
