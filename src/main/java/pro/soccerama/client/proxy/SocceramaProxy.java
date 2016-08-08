@@ -20,7 +20,7 @@ public abstract class SocceramaProxy {
 		synchronized (this) {
 			try {
 				while (System.currentTimeMillis() - lastCall <= (Math.ceil(HOUR_IN_SECOND / CALL_BY_HOUR) * 1000)) {
-					TimeUnit.SECONDS.sleep(25);
+					TimeUnit.SECONDS.sleep(1);
 					// System.out.println(".");
 				}
 			} catch (final InterruptedException e) {
