@@ -10,7 +10,7 @@ public abstract class SocceramaProxy {
 	public static final String VERSION = "v1.1";
 
 	private static final double HOUR_IN_SECOND = 3600.0;
-	private static final double CALL_BY_HOUR = 1000.0;
+	private static final double CALL_BY_HOUR = 720.0;
 	private static long lastCall = 0;
 
 	/**
