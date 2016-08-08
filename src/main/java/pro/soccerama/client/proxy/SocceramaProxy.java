@@ -9,6 +9,8 @@ public abstract class SocceramaProxy {
 	public static final String COMMON_URL_PARAMS = "?api_token={api_token}&include={includes}";
 	public static final String VERSION = "v1.1";
 
+	private static final long HOUR = 3600;
+	private static final long CALL_BY_HOUR = 1000;
 	private static long lastCall = 0;
 
 	/**
@@ -17,7 +19,7 @@ public abstract class SocceramaProxy {
 	protected void waitBeforeNextCall() {
 		synchronized (this) {
 			try {
-				while (System.currentTimeMillis() - lastCall < 5 * 1000) {
+				while (System.currentTimeMillis() - lastCall < HOUR / CALL_BY_HOUR) {
 					TimeUnit.SECONDS.sleep(1);
 					// System.out.println(".");
 				}
