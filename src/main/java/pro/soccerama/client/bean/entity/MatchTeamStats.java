@@ -14,14 +14,14 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Generated("org.jsonschema2pojo")
-@JsonPropertyOrder({ "team_id", "shots_on_goal", "shots_total", "fouls_total", "corners_total", "offsides_total",
+@JsonPropertyOrder({ "team_id", "shots_on_target", "shots_total", "fouls_total", "corners_total", "offsides_total",
 	"possesion", "yellowcards", "redcards", "saves" })
 public class MatchTeamStats {
 
 	@JsonProperty("team_id")
 	private Integer teamId;
-	@JsonProperty("shots_on_goal")
-	private Integer shotsOnGoal;
+	@JsonProperty("shots_on_target")
+	private Integer shotsOnTarget;
 	@JsonProperty("shots_total")
 	private Integer shotsTotal;
 	@JsonProperty("fouls_total")
@@ -62,21 +62,21 @@ public class MatchTeamStats {
 
 	/**
 	 *
-	 * @return The shotsOnGoal
+	 * @return The shotsOnTarget
 	 */
-	@JsonProperty("shots_on_goal")
-	public Integer getShotsOnGoal() {
-		return shotsOnGoal;
+	@JsonProperty("shots_on_target")
+	public Integer getShotsOnTarget() {
+		return shotsOnTarget;
 	}
 
 	/**
 	 *
-	 * @param shotsOnGoal
-	 *            The shots_on_goal
+	 * @param shotsOnTarget
+	 *            The shots_on_target
 	 */
-	@JsonProperty("shots_on_goal")
-	public void setShotsOnGoal(final Integer shotsOnGoal) {
-		this.shotsOnGoal = shotsOnGoal;
+	@JsonProperty("shots_on_target")
+	public void setShotsOnTarget(final Integer shotsOnTarget) {
+		this.shotsOnTarget = shotsOnTarget;
 	}
 
 	/**

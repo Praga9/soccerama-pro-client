@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>pro.soccerama</groupId>
 	<artifactId>rest-client</artifactId>
-	<version>1.1.2</version>
+	<version>1.2</version>
 	<build>
 		<plugins>
 			<plugin>
@@ -17,8 +17,8 @@
 			</plugin>
 		</plugins>
 	</build>
-	<name>Client Rest for Soccerama API</name>
-	<description>Java Library to call Soccerama API easier.</description>
+	<url>Client Rest for Soccerama API</url>
+	<description>Java Library to call Soccerama API v1.2 easier.</description>
 
 
 	<properties>

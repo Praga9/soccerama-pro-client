@@ -22,7 +22,7 @@ import pro.soccerama.client.bean.structure.PlayerMatchLineups;
         "birth_date",
         "birth_place",
         "height",
-        "weight", "position", "team", "events", "lineups"})
+        "weight", "photo", "position", "team", "events", "lineups"})
 public class Player {
 
     @JsonProperty("id")
@@ -30,17 +30,19 @@ public class Player {
     @JsonProperty("name")
     private String name;
     @JsonProperty("nationality")
-    private Object nationality;
+    private String nationality;
     @JsonProperty("birth_country")
-    private Object birthCountry;
+    private String birthCountry;
     @JsonProperty("birth_date")
-    private Object birthDate;
+    private String birthDate;
     @JsonProperty("birth_place")
-    private Object birthPlace;
+    private String birthPlace;
     @JsonProperty("height")
-    private Object height;
+    private String height;
     @JsonProperty("weight")
-    private Object weight;
+    private String weight;
+    @JsonProperty("photo")
+    private String photo;
     @JsonProperty("position")
     private Position position;
     @JsonProperty("team")
@@ -88,7 +90,7 @@ public class Player {
      * @return The nationality
      */
     @JsonProperty("nationality")
-    public Object getNationality() {
+    public String getNationality() {
         return nationality;
     }
 
@@ -96,7 +98,7 @@ public class Player {
      * @param nationality The nationality
      */
     @JsonProperty("nationality")
-    public void setNationality(Object nationality) {
+    public void setNationality(String nationality) {
         this.nationality = nationality;
     }
 
@@ -104,7 +106,7 @@ public class Player {
      * @return The birthCountry
      */
     @JsonProperty("birth_country")
-    public Object getBirthCountry() {
+    public String getBirthCountry() {
         return birthCountry;
     }
 
@@ -112,7 +114,7 @@ public class Player {
      * @param birthCountry The birth_country
      */
     @JsonProperty("birth_country")
-    public void setBirthCountry(Object birthCountry) {
+    public void setBirthCountry(String birthCountry) {
         this.birthCountry = birthCountry;
     }
 
@@ -120,7 +122,7 @@ public class Player {
      * @return The birthDate
      */
     @JsonProperty("birth_date")
-    public Object getBirthDate() {
+    public String getBirthDate() {
         return birthDate;
     }
 
@@ -128,7 +130,7 @@ public class Player {
      * @param birthDate The birth_date
      */
     @JsonProperty("birth_date")
-    public void setBirthDate(Object birthDate) {
+    public void setBirthDate(String birthDate) {
         this.birthDate = birthDate;
     }
 
@@ -136,7 +138,7 @@ public class Player {
      * @return The birthPlace
      */
     @JsonProperty("birth_place")
-    public Object getBirthPlace() {
+    public String getBirthPlace() {
         return birthPlace;
     }
 
@@ -144,7 +146,7 @@ public class Player {
      * @param birthPlace The birth_place
      */
     @JsonProperty("birth_place")
-    public void setBirthPlace(Object birthPlace) {
+    public void setBirthPlace(String birthPlace) {
         this.birthPlace = birthPlace;
     }
 
@@ -152,7 +154,7 @@ public class Player {
      * @return The height
      */
     @JsonProperty("height")
-    public Object getHeight() {
+    public String getHeight() {
         return height;
     }
 
@@ -160,7 +162,7 @@ public class Player {
      * @param height The height
      */
     @JsonProperty("height")
-    public void setHeight(Object height) {
+    public void setHeight(String height) {
         this.height = height;
     }
 
@@ -168,7 +170,7 @@ public class Player {
      * @return The weight
      */
     @JsonProperty("weight")
-    public Object getWeight() {
+    public String getWeight() {
         return weight;
     }
 
@@ -176,8 +178,26 @@ public class Player {
      * @param weight The weight
      */
     @JsonProperty("weight")
-    public void setWeight(Object weight) {
+    public void setWeight(String weight) {
         this.weight = weight;
+    }
+
+    /**
+     *
+     * @return
+     */
+    @JsonProperty("photo")
+    public String getPhoto() {
+        return photo;
+    }
+
+    /**
+     *
+     * @param photo
+     */
+    @JsonProperty("photo")
+    public void setPhoto(String photo) {
+        this.photo = photo;
     }
 
     /**
