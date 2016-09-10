@@ -28,11 +28,12 @@ final List<OddBookmaker> matchOdds = proxy.findByMatch(params);
 - CountryProxy
 - LivescoreProxy
 - MatchCommentProxy
+- MatchEventProxy
 - MatchProxy
 - MatchStatisticsProxy
 - OddProxy
 - PlayerProxy
 - SeasonProxy
-- SocceramaProxy
 - StandingProxy
 - TeamProxy
+- VideoProxy
