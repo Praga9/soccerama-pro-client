@@ -1,90 +1,98 @@
 package pro.soccerama.client.proxy;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import com.mashape.unirest.http.HttpResponse;
-
+import org.apache.log4j.Logger;
 import pro.soccerama.client.bean.entity.Match;
 import pro.soccerama.client.exception.HaveToDefineValidIdException;
 import pro.soccerama.client.exception.NotFoundException;
 import pro.soccerama.client.tools.SocceramaRest;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Proxy Matchs
  */
 public class MatchProxy extends SocceramaProxy {
 
-	private static final String BASE_URL = SocceramaProxy.API_URL + SocceramaProxy.VERSION + "/matches";
-	private static final String BY_ID_URL = BASE_URL + "/{id}";
-	private static MatchProxy INSTANCE;
+    private static final Logger LOGGER = Logger.getLogger(MatchProxy.class);
 
-	private MatchProxy() {
-		// Hide constructor
-	}
+    private static final String BASE_URL = SocceramaProxy.API_URL + SocceramaProxy.VERSION + "/matches";
+    private static final String BY_ID_URL = BASE_URL + "/{id}";
+    private static MatchProxy INSTANCE;
 
-	/**
-	 * Singleton
-	 *
-	 * @return
-	 */
-	public static MatchProxy getInstance() {
-		if (INSTANCE == null) {
-			INSTANCE = new MatchProxy();
-		}
+    private MatchProxy() {
+        // Hide constructor
+    }
 
-		return INSTANCE;
-	}
+    /**
+     * Singleton
+     *
+     * @return
+     */
+    public static MatchProxy getInstance() {
+        if (INSTANCE == null) {
+            INSTANCE = new MatchProxy();
+        }
 
-	/**
-	 * @param url
-	 * @param params
-	 * @return
-	 */
-	private Match find(final String url, final MatchProxyParams params) {
+        return INSTANCE;
+    }
 
-		waitBeforeNextCall();
+    /**
+     * @param url
+     * @param params
+     * @return
+     */
+    private Match find(final String url, final MatchProxyParams params) {
 
-		final Map<String, String> paramsMap = new HashMap<>();
-		if (params != null) {
-			paramsMap.put("includes", params.getRelations());
-			if (params.isValidId()) {
-				paramsMap.put("id", params.getMatchId().toString());
-			}
-		}
+        waitBeforeNextCall();
 
-		final HttpResponse<Match> httpResponse = SocceramaRest.get(url, paramsMap, Match.class);
-		return httpResponse.getBody();
-	}
+        final Map<String, String> paramsMap = new HashMap<>();
+        if (params != null) {
+            paramsMap.put("includes", params.getRelations());
+            if (params.isValidId()) {
+                paramsMap.put("id", params.getMatchId().toString());
+            }
+        }
 
-	/**
-	 * @param MatchId
-	 * @return
-	 * @throws NotFoundException
-	 */
-	public Match findOne(final Integer MatchId) throws NotFoundException {
-		final MatchProxyParams params = new MatchProxyParams();
-		params.setMatchId(MatchId);
-		return findOne(params);
-	}
+        final HttpResponse<Match> httpResponse = SocceramaRest.get(url, paramsMap, Match.class);
+        try {
+            return httpResponse.getBody();
+        } catch (Exception e) {
+            LOGGER.error(e);
+            return null;
+        }
+    }
 
-	/**
-	 * Liste de toutes les matches autorisées avec les relations définies
-	 */
-	public Match findOne(final MatchProxyParams params) {
+    /**
+     * @param MatchId
+     * @return
+     * @throws NotFoundException
+     */
+    public Match findOne(final Integer MatchId) throws NotFoundException {
+        final MatchProxyParams params = new MatchProxyParams();
+        params.setMatchId(MatchId);
+        return findOne(params);
+    }
 
-		if (!params.isValidId()) {
-			throw new HaveToDefineValidIdException();
-		}
+    /**
+     * Liste de toutes les matches autorisées avec les relations définies
+     */
+    public Match findOne(final MatchProxyParams params) {
 
-		return find(BY_ID_URL, params);
-	}
+        if (!params.isValidId()) {
+            throw new HaveToDefineValidIdException();
+        }
 
-	/**
-	 * Matches relations
-	 */
-	public enum Relation {
-		competition, season, homeTeam, awayTeam, venue, events, lineup, homeStats, awayStats, commentaries, odds, videos
-	}
+        return find(BY_ID_URL, params);
+    }
+
+    /**
+     * Matches relations
+     */
+    public enum Relation {
+        competition, season, homeTeam, awayTeam, venue, events, lineup, homeStats, awayStats, commentaries, odds, videos
+    }
 
 }
