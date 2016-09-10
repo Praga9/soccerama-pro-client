@@ -16,11 +16,9 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @Generated("org.jsonschema2pojo")
 @JsonPropertyOrder({ "id", "team_id", "player_id", "player_name", "position", "shirt_number", "assists", "fouls_commited",
 	"fouls_drawn", "goals", "offsides", "missed_penalties", "scored_penalties", "posx", "posy", "redcards", "saves",
-	"shots_on_goal", "shots_total", "yellowcards", "type" })
+	"shots_on_target", "shots_off_target", "throw_in_total", "shots_total", "yellowcards", "type" })
 public class MatchLineup {
 
-	@JsonProperty("id")
-	private Integer id;
 	@JsonProperty("team_id")
 	private Integer teamId;
 	@JsonProperty("player_id")
@@ -53,8 +51,12 @@ public class MatchLineup {
 	private Integer redcards;
 	@JsonProperty("saves")
 	private Integer saves;
-	@JsonProperty("shots_on_goal")
-	private Integer shotsOnGoal;
+	@JsonProperty("shots_on_target")
+	private Integer shotsOnTarget;
+	@JsonProperty("shots_off_target")
+	private Integer shotsOffTarget;
+	@JsonProperty("throw_in_total")
+	private Integer throwInTotal;
 	@JsonProperty("shots_total")
 	private Integer shotsTotal;
 	@JsonProperty("yellowcards")
@@ -64,24 +66,6 @@ public class MatchLineup {
 	@JsonIgnore
 	private final Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-	/**
-	 *
-	 * @return The id
-	 */
-	@JsonProperty("id")
-	public Integer getId() {
-		return id;
-	}
-
-	/**
-	 *
-	 * @param id
-	 *            The id
-	 */
-	@JsonProperty("id")
-	public void setId(final Integer id) {
-		this.id = id;
-	}
 	/**
 	 *
 	 * @return
@@ -388,21 +372,57 @@ public class MatchLineup {
 
 	/**
 	 *
-	 * @return The shotsOnGoal
+	 * @return The shotsOnTarget
 	 */
-	@JsonProperty("shots_on_goal")
-	public Integer getShotsOnGoal() {
-		return shotsOnGoal;
+	@JsonProperty("shots_on_target")
+	public Integer getShotsOnTarget() {
+		return shotsOnTarget;
 	}
 
 	/**
 	 *
-	 * @param shotsOnGoal
-	 *            The shots_on_goal
+	 * @param shotsOnTarget
+	 *            The shots_on_target
 	 */
-	@JsonProperty("shots_on_goal")
-	public void setShotsOnGoal(final Integer shotsOnGoal) {
-		this.shotsOnGoal = shotsOnGoal;
+	@JsonProperty("shots_on_target")
+	public void setShotsOnTarget(final Integer shotsOnTarget) {
+		this.shotsOnTarget = shotsOnTarget;
+	}
+
+	/**
+	 *
+	 * @return
+     */
+	@JsonProperty("shots_off_target")
+	public Integer getShotsOffTarget() {
+		return shotsOffTarget;
+	}
+
+	/**
+	 *
+	 * @param shotsOffTarget
+     */
+	@JsonProperty("shots_off_target")
+	public void setShotsOffTarget(Integer shotsOffTarget) {
+		this.shotsOffTarget = shotsOffTarget;
+	}
+
+	/**
+	 *
+	 * @return
+     */
+	@JsonProperty("throw_in_total")
+	public Integer getThrowInTotal() {
+		return throwInTotal;
+	}
+
+	/**
+	 *
+	 * @param throwInTotal
+     */
+	@JsonProperty("throw_in_total")
+	public void setThrowInTotal(Integer throwInTotal) {
+		this.throwInTotal = throwInTotal;
 	}
 
 	/**

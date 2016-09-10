@@ -12,16 +12,14 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
-import pro.soccerama.client.bean.structure.MatchCommentaries;
-import pro.soccerama.client.bean.structure.MatchEvents;
-import pro.soccerama.client.bean.structure.MatchLineups;
+import pro.soccerama.client.bean.structure.*;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Generated("org.jsonschema2pojo")
 @JsonPropertyOrder({ "id", "home_team_id", "away_team_id", "home_score", "away_score", "home_score_penalties",
 	"away_score_penalties", "formation", "date_time_tba", "spectators", "starting_date", "starting_time", "status",
-	"minute", "extra_minute", "competition_id", "venue_id", "season_id", "round_id", "stage_id", "aggregate", "homeTeam",
-	"awayTeam", "venue", "events", "lineup", "homeStats", "awayStats", "competition", "season", "commentaries" })
+	"minute", "extra_time", "injury_time", "referee_id", "competition_id", "venue_id", "season_id", "round_id", "stage_id", "aggregate", "homeTeam",
+	"awayTeam", "venue", "events", "lineup", "homeStats", "awayStats", "competition", "season", "commentaries", "weather", "temperature", "odds", "videos" })
 public class Match {
 
 	@JsonProperty("id")
@@ -52,8 +50,12 @@ public class Match {
 	private String status;
 	@JsonProperty("minute")
 	private Integer minute;
-	@JsonProperty("extra_minute")
-	private Integer extraMinute;
+	@JsonProperty("extra_time")
+	private Integer extraTime;
+	@JsonProperty("injury_time")
+	private Integer injuryTime;
+	@JsonProperty("referee_id")
+	private Integer refereeId;
 	@JsonProperty("competition_id")
 	private Integer competitionId;
 	@JsonProperty("venue_id")
@@ -86,8 +88,17 @@ public class Match {
 	private Season season;
 	@JsonProperty("commentaries")
 	private MatchCommentaries commentaries;
+	@JsonProperty("weather")
+	private String weather;
+	@JsonProperty("temperature")
+	private String temperature;
+	@JsonProperty("odds")
+	private OddsResponse odds;
+	@JsonProperty("videos")
+	private VideosResponse videos;
 	@JsonIgnore
 	private final Map<String, Object> additionalProperties = new HashMap<String, Object>();
+
 
 	/**
 	 *
@@ -357,21 +368,21 @@ public class Match {
 
 	/**
 	 *
-	 * @return The extraMinute
+	 * @return The extraTime
 	 */
-	@JsonProperty("extra_minute")
-	public Integer getExtraMinute() {
-		return extraMinute;
+	@JsonProperty("extra_time")
+	public Integer getExtraTime() {
+		return extraTime;
 	}
 
 	/**
 	 *
-	 * @param extraMinute
-	 *            The extra_minute
+	 * @param extraTime
+	 *            The extra_time
 	 */
-	@JsonProperty("extra_minute")
-	public void setExtraMinute(final Integer extraMinute) {
-		this.extraMinute = extraMinute;
+	@JsonProperty("extra_time")
+	public void setExtraTime(final Integer extraTime) {
+		this.extraTime = extraTime;
 	}
 
 	/**
@@ -677,6 +688,67 @@ public class Match {
 	public void setCommentaries(final MatchCommentaries commentaries) {
 		this.commentaries = commentaries;
 	}
+
+	@JsonProperty("injury_time")
+	public Integer getInjuryTime() {
+		return injuryTime;
+	}
+
+	@JsonProperty("injury_time")
+	public void setInjuryTime(Integer injuryTime) {
+		this.injuryTime = injuryTime;
+	}
+
+	@JsonProperty("referee_id")
+	public Integer getRefereeId() {
+		return refereeId;
+	}
+
+	@JsonProperty("referee_id")
+	public void setRefereeId(Integer refereeId) {
+		this.refereeId = refereeId;
+	}
+
+	@JsonProperty("weather")
+	public String getWeather() {
+		return weather;
+	}
+
+	@JsonProperty("weather")
+	public void setWeather(String weather) {
+		this.weather = weather;
+	}
+
+	@JsonProperty("temperature")
+	public String getTemperature() {
+		return temperature;
+	}
+
+	@JsonProperty("temperature")
+	public void setTemperature(String temperature) {
+		this.temperature = temperature;
+	}
+
+	@JsonProperty("odds")
+	public OddsResponse getOdds() {
+		return odds;
+	}
+
+	@JsonProperty("odds")
+	public void setOdds(OddsResponse odds) {
+		this.odds = odds;
+	}
+
+	@JsonProperty("videos")
+	public VideosResponse getVideos() {
+		return videos;
+	}
+
+	@JsonProperty("videos")
+	public void setVideos(VideosResponse videos) {
+		this.videos = videos;
+	}
+
 
 	@JsonAnyGetter
 	public Map<String, Object> getAdditionalProperties() {

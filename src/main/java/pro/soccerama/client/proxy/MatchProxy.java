@@ -84,7 +84,7 @@ public class MatchProxy extends SocceramaProxy {
 	 * Matches relations
 	 */
 	public enum Relation {
-		league, season, homeTeam, awayTeam, venue, events, lineup, homeStats, awayStats, commentaries
+		competition, season, homeTeam, awayTeam, venue, events, lineup, homeStats, awayStats, commentaries, odds, videos
 	}
 
 }

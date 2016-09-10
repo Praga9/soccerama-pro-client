@@ -214,7 +214,7 @@ public class TeamProxy extends SocceramaProxy {
 	 * Team relations
 	 */
 	public enum Relation {
-		players, venue
+		players, venue, coach, chairman
 	}
 
 }

@@ -14,7 +14,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Generated("org.jsonschema2pojo")
-@JsonPropertyOrder({ "id", "body", "is_goal", "important", "minute" })
+@JsonPropertyOrder({ "id", "body", "is_goal", "important", "minute", "team_id" })
 public class MatchComment {
 
 	@JsonProperty("id")
@@ -27,6 +27,8 @@ public class MatchComment {
 	private Integer important;
 	@JsonProperty("minute")
 	private String minute;
+	@JsonProperty("team_id")
+	private Integer teamId;
 	@JsonIgnore
 	private final Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
@@ -123,6 +125,16 @@ public class MatchComment {
 	@JsonProperty("minute")
 	public void setMinute(final String minute) {
 		this.minute = minute;
+	}
+
+	@JsonProperty("team_id")
+	public Integer getTeamId() {
+		return teamId;
+	}
+
+	@JsonProperty("team_id")
+	public void setTeamId(Integer teamId) {
+		this.teamId = teamId;
 	}
 
 	@JsonAnyGetter
