@@ -12,7 +12,7 @@ import pro.soccerama.client.exception.HaveToDefineValidIdException;
  */
 public class MatchStatisticsProxy extends SocceramaProxy {
 
-	private static final String BASE_URL = "https://api.soccerama.pro/" + SocceramaProxy.VERSION + "/statistics";
+	private static final String BASE_URL = SocceramaProxy.API_URL + SocceramaProxy.VERSION + "/statistics";
 	private static final String BY_MATCH_URL = BASE_URL + "/match/{matchId}";
 
 	private static MatchStatisticsProxy INSTANCE;

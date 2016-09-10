@@ -20,7 +20,7 @@ import pro.soccerama.client.tools.SocceramaRest;
  */
 public class TeamProxy extends SocceramaProxy {
 
-	private static final String BASE_URL = "https://api.soccerama.pro/" + SocceramaProxy.VERSION + "/teams";
+	private static final String BASE_URL = SocceramaProxy.API_URL + SocceramaProxy.VERSION + "/teams";
 	private static final String BY_ID_URL = BASE_URL + "/{teamId}";
 	private static final String BY_SEASON_URL = BASE_URL + "/season/{seasonId}";
 	private static final String MATCHES_BY_SEASON_URL = BASE_URL + "/{teamId}/season/{seasonId}";

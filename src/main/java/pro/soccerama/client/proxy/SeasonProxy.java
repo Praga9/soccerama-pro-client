@@ -17,7 +17,7 @@ import pro.soccerama.client.tools.SocceramaRest;
  */
 public class SeasonProxy extends SocceramaProxy {
 
-    private static final String BASE_URL = "https://api.soccerama.pro/" + SocceramaProxy.VERSION + "/seasons";
+    private static final String BASE_URL = SocceramaProxy.API_URL + SocceramaProxy.VERSION + "/seasons";
     private static final String BY_ID_URL = BASE_URL + "/{id}";
     private static SeasonProxy INSTANCE;
 

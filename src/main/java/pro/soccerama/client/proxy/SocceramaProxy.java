@@ -6,6 +6,7 @@ import java.util.concurrent.TimeUnit;
  * Created by kevin on 21/05/2016.
  */
 public abstract class SocceramaProxy {
+	public static final String API_URL = "https://api.soccerama.pro/";
 	public static final String COMMON_URL_PARAMS = "?api_token={api_token}&include={includes}";
 	public static final String VERSION = "v1.2";
 

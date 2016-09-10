@@ -21,7 +21,7 @@ import java.util.Map;
  */
 public class VideoProxy extends SocceramaProxy {
 
-	private static final String BASE_URL = "https://api.soccerama.pro/" + SocceramaProxy.VERSION + "/videos/match/{matchId}";
+	private static final String BASE_URL = SocceramaProxy.API_URL + SocceramaProxy.VERSION + "/videos/match/{matchId}";
 
 
 	private static VideoProxy INSTANCE;

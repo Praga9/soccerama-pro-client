@@ -16,6 +16,13 @@ import java.util.Map;
 public class SocceramaRest {
 
 
+    /**
+     * @param baseUrl
+     * @param params
+     * @param clazz
+     * @param <T>
+     * @return
+     */
     public static <T> HttpResponse<T> get(final String baseUrl, final Map<String, String> params, final Class<T> clazz) {
 
         final GetRequest getRequest = Unirest.get(baseUrl + SocceramaProxy.COMMON_URL_PARAMS);
@@ -30,7 +37,11 @@ public class SocceramaRest {
         return null;
     }
 
-    private static void config(HttpRequest httpRequest, Map<String, String> params) {
+    /**
+     * @param httpRequest
+     * @param params
+     */
+    private static void config(final HttpRequest httpRequest, final Map<String, String> params) {
         httpRequest.routeParam("api_token", SocceramaAPIClient.getInstance().getApiToken());
 
         if (params != null && !params.isEmpty()) {

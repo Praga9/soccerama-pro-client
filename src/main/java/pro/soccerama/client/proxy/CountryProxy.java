@@ -18,7 +18,7 @@ import pro.soccerama.client.tools.SocceramaRest;
  */
 public class CountryProxy extends SocceramaProxy {
 
-    private static final String BASE_URL = "https://api.soccerama.pro/"+SocceramaProxy.VERSION+"/countries";
+    private static final String BASE_URL = SocceramaProxy.API_URL + SocceramaProxy.VERSION + "/countries";
     private static final String BY_ID_URL = BASE_URL + "/{id}";
     private static CountryProxy INSTANCE;
 
@@ -72,7 +72,7 @@ public class CountryProxy extends SocceramaProxy {
 
         final HttpResponse<CountriesResponse> httpResponse = SocceramaRest.get(url, paramsMap, CountriesResponse.class);
         final CountriesResponse body = httpResponse.getBody();
-        if(body != null){
+        if (body != null) {
             response.addAll(body.getData());
         }
 

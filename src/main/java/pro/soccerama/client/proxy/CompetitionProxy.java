@@ -15,7 +15,7 @@ import pro.soccerama.client.tools.SocceramaRest;
 
 public class CompetitionProxy extends SocceramaProxy {
 
-	private static final String BASE_URL = "https://api.soccerama.pro/"+SocceramaProxy.VERSION+"/competitions";
+	private static final String BASE_URL = SocceramaProxy.API_URL+SocceramaProxy.VERSION+"/competitions";
 	private static final String BY_ID_URL = BASE_URL + "/{id}";
 	private static CompetitionProxy INSTANCE;
 

@@ -16,7 +16,7 @@ import java.util.Map;
  */
 public class MatchEventProxy extends SocceramaProxy {
 
-    private static final String BASE_URL = "https://api.soccerama.pro/" + SocceramaProxy.VERSION + "/events/match/{matchId}";
+    private static final String BASE_URL = SocceramaProxy.API_URL + SocceramaProxy.VERSION + "/events/match/{matchId}";
 
 
     private static MatchEventProxy INSTANCE;

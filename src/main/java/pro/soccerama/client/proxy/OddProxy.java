@@ -18,7 +18,7 @@ import pro.soccerama.client.tools.SocceramaRest;
  */
 public class OddProxy extends SocceramaProxy {
 
-	private static final String BASE_URL = "https://api.soccerama.pro/" + SocceramaProxy.VERSION + "/odds";
+	private static final String BASE_URL = SocceramaProxy.API_URL + SocceramaProxy.VERSION + "/odds";
 	private static final String BY_MATCH_URL = BASE_URL + "/match/{matchId}";
 	private static final String BY_MATCH_AND_BOOKMAKER_URL = BY_MATCH_URL + "/bookmaker/{bookmakerId}";
 	private static final String BY_BOOKMAKER_AND_DATE_URL = BASE_URL + "/bookmaker/{bookmakerId}/date/{date}";
