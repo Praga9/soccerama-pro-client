@@ -30,7 +30,6 @@ public abstract class SocceramaProxy {
 				e.printStackTrace();
 			}
 
-			System.out.println(System.currentTimeMillis());
 			lastCall = System.currentTimeMillis();
 			notifyAll();
 			return;
