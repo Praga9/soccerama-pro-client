@@ -7,7 +7,7 @@ import java.util.concurrent.TimeUnit;
  */
 public abstract class SocceramaProxy {
 	public static final String COMMON_URL_PARAMS = "?api_token={api_token}&include={includes}";
-	public static final String VERSION = "v1.1";
+	public static final String VERSION = "v1.2";
 
 	private static final double SECOND_IN_MILLISECOND = 1000.0;
 	private static final double HOUR_IN_SECOND = 3600.0;
