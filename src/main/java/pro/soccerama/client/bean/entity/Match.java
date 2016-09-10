@@ -26,6 +26,12 @@ public class Match {
 
 	@JsonProperty("id")
 	private Integer id;
+	@JsonProperty("ht_score")
+	private String htScore;
+	@JsonProperty("ft_score")
+	private String ftScore;
+	@JsonProperty("et_score")
+	private String etScore;
 	@JsonProperty("home_team_id")
 	private Integer homeTeamId;
 	@JsonProperty("away_team_id")
@@ -65,7 +71,9 @@ public class Match {
 	@JsonProperty("stage_id")
 	private Integer stageId;
 	@JsonProperty("aggregate")
-	private Object aggregate;
+	private Integer aggregate;
+	@JsonProperty("placeholder")
+	private Boolean placeholder;
 	@JsonProperty("homeTeam")
 	private Team homeTeam;
 	@JsonProperty("awayTeam")
@@ -106,6 +114,66 @@ public class Match {
 	@JsonProperty("id")
 	public void setId(final Integer id) {
 		this.id = id;
+	}
+
+	/**
+	 *
+	 * @return
+	 * The htScore
+	 */
+	@JsonProperty("ht_score")
+	public String getHtScore() {
+		return htScore;
+	}
+
+	/**
+	 *
+	 * @param htScore
+	 * The ht_score
+	 */
+	@JsonProperty("ht_score")
+	public void setHtScore(String htScore) {
+		this.htScore = htScore;
+	}
+
+	/**
+	 *
+	 * @return
+	 * The ftScore
+	 */
+	@JsonProperty("ft_score")
+	public String getFtScore() {
+		return ftScore;
+	}
+
+	/**
+	 *
+	 * @param ftScore
+	 * The ft_score
+	 */
+	@JsonProperty("ft_score")
+	public void setFtScore(String ftScore) {
+		this.ftScore = ftScore;
+	}
+
+	/**
+	 *
+	 * @return
+	 * The etScore
+	 */
+	@JsonProperty("et_score")
+	public String getEtScore() {
+		return etScore;
+	}
+
+	/**
+	 *
+	 * @param etScore
+	 * The et_score
+	 */
+	@JsonProperty("et_score")
+	public void setEtScore(String etScore) {
+		this.etScore = etScore;
 	}
 
 	/**
@@ -474,7 +542,7 @@ public class Match {
 	 * @return The aggregate
 	 */
 	@JsonProperty("aggregate")
-	public Object getAggregate() {
+	public Integer getAggregate() {
 		return aggregate;
 	}
 
@@ -484,8 +552,28 @@ public class Match {
 	 *            The aggregate
 	 */
 	@JsonProperty("aggregate")
-	public void setAggregate(final Object aggregate) {
+	public void setAggregate(final Integer aggregate) {
 		this.aggregate = aggregate;
+	}
+
+	/**
+	 *
+	 * @return
+	 * The placeholder
+	 */
+	@JsonProperty("placeholder")
+	public Boolean getPlaceholder() {
+		return placeholder;
+	}
+
+	/**
+	 *
+	 * @param placeholder
+	 * The placeholder
+	 */
+	@JsonProperty("placeholder")
+	public void setPlaceholder(Boolean placeholder) {
+		this.placeholder = placeholder;
 	}
 
 	/**
