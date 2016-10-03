@@ -1,23 +1,22 @@
 package pro.soccerama.client.proxy;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import com.mashape.unirest.http.HttpResponse;
-
 import pro.soccerama.client.bean.entity.Player;
 import pro.soccerama.client.bean.structure.PlayersResponse;
 import pro.soccerama.client.exception.HaveToDefineValidIdException;
 import pro.soccerama.client.exception.NotFoundException;
 import pro.soccerama.client.tools.SocceramaRest;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 /**
  * Proxy Players
  */
 public class PlayerProxy extends SocceramaProxy {
 
-	private static final String BASE_URL = "https://api.soccerama.pro/" + SocceramaProxy.VERSION + "/players";
+	private static final String BASE_URL = SocceramaProxy.API_URL + SocceramaProxy.VERSION + "/players";
 	private static final String BY_ID_URL = BASE_URL + "/{playerId}";
 	private static final String BY_TEAM_URL = BASE_URL + "/team/{teamId}";
 
@@ -100,7 +99,8 @@ public class PlayerProxy extends SocceramaProxy {
 	public Player findOne(final PlayerProxyParams params) {
 
 		if (!params.isValidPlayerId()) {
-			throw new HaveToDefineValidIdException();
+			System.out.println("Invalid player id : " + params.getPlayerId());
+			throw new HaveToDefineValidIdException(params.getPlayerId());
 		}
 
 		return findUnique(BY_ID_URL, params);

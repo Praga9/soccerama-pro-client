@@ -16,7 +16,7 @@ import pro.soccerama.client.tools.SocceramaRest;
  */
 public class MatchCommentProxy extends SocceramaProxy {
 
-    private static final String BASE_URL = "https://api.soccerama.pro/" + SocceramaProxy.VERSION + "/commentaries/match";
+    private static final String BASE_URL = SocceramaProxy.API_URL + SocceramaProxy.VERSION + "/commentaries/match";
     private static final String BY_ID_URL = BASE_URL + "/{matchId}";
     private static MatchCommentProxy INSTANCE;
 

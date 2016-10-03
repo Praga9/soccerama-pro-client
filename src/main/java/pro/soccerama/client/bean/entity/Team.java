@@ -1,19 +1,12 @@
 package pro.soccerama.client.bean.entity;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import javax.annotation.Generated;
-
-import com.fasterxml.jackson.annotation.JsonAnyGetter;
-import com.fasterxml.jackson.annotation.JsonAnySetter;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-
+import com.fasterxml.jackson.annotation.*;
 import pro.soccerama.client.bean.structure.TeamMatches;
 import pro.soccerama.client.bean.structure.TeamPlayers;
+
+import javax.annotation.Generated;
+import java.util.HashMap;
+import java.util.Map;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Generated("org.jsonschema2pojo")
@@ -27,6 +20,8 @@ import pro.soccerama.client.bean.structure.TeamPlayers;
         "venue",
         "matches",
         "coach_id",
+        "chairman_id",
+        "coach",
         "chairman"
 })
 public class Team {
@@ -51,6 +46,10 @@ public class Team {
     private Integer coachId;
     @JsonProperty("chairman_id")
     private Integer chairmanId;
+    @JsonProperty("coach")
+    private Coach coach;
+    @JsonProperty("chairman")
+    private Chairman chairman;
     @JsonIgnore
     private final Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
@@ -182,25 +181,79 @@ public class Team {
         this.matches = matches;
     }
 
+    /**
+     *
+     * @return
+     */
     @JsonProperty("coach_id")
     public Integer getCoachId() {
         return coachId;
     }
 
+    /**
+     *
+     * @param coachId
+     */
     @JsonProperty("coach_id")
     public void setCoachId(Integer coachId) {
         this.coachId = coachId;
     }
 
+    /**
+     *
+     * @return
+     */
     @JsonProperty("chairman_id")
     public Integer getChairmanId() {
         return chairmanId;
     }
 
+    /**
+     *
+     * @param chairmanId
+     */
     @JsonProperty("chairman_id")
     public void setChairmanId(Integer chairmanId) {
         this.chairmanId = chairmanId;
     }
+
+    /**
+     *
+     * @param chairman
+     */
+    @JsonProperty("chairman")
+    public void setChairman(Chairman chairman) {
+        this.chairman = chairman;
+    }
+
+    /**
+     *
+     * @return
+     */
+    @JsonProperty("chairman")
+    public Chairman getChairman() {
+        return chairman;
+    }
+
+    /**
+     *
+     * @return
+     */
+    @JsonProperty("coach")
+    public Coach getCoach() {
+        return coach;
+    }
+
+    /**
+     *
+     * @param coach
+     */
+    @JsonProperty("coach")
+    public void setCoach(final Coach coach) {
+        this.coach = coach;
+    }
+
+
 
     @JsonAnyGetter
     public Map<String, Object> getAdditionalProperties() {

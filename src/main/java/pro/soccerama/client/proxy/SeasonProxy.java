@@ -1,23 +1,22 @@
 package pro.soccerama.client.proxy;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import com.mashape.unirest.http.HttpResponse;
-
 import pro.soccerama.client.bean.entity.Season;
 import pro.soccerama.client.bean.structure.SeasonResponse;
 import pro.soccerama.client.exception.NotFoundException;
 import pro.soccerama.client.tools.SocceramaRest;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Proxy Seasons
  */
 public class SeasonProxy extends SocceramaProxy {
 
-    private static final String BASE_URL = "https://api.soccerama.pro/" + SocceramaProxy.VERSION + "/seasons";
+    private static final String BASE_URL = SocceramaProxy.API_URL + SocceramaProxy.VERSION + "/seasons";
     private static final String BY_ID_URL = BASE_URL + "/{id}";
     private static SeasonProxy INSTANCE;
 
@@ -50,7 +49,9 @@ public class SeasonProxy extends SocceramaProxy {
      * Liste de toutes les saisons autorisées avec les relations définies
      */
     public List<Season> findAll(final SeasonProxyParams params) {
-        params.setSeasonId(null);
+        if(null != params) {
+            params.setSeasonId(null);
+        }
         return find(BASE_URL, params);
     }
 

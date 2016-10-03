@@ -17,6 +17,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder({ "id", "team_id", "player_id", "player_name", "position", "shirt_number", "assists", "fouls_commited",
 	"fouls_drawn", "goals", "offsides", "missed_penalties", "scored_penalties", "posx", "posy", "redcards", "saves",
 	"shots_on_target", "shots_off_target", "throw_in_total", "shots_total", "yellowcards", "type" })
+
 public class MatchLineup {
 
 	@JsonProperty("team_id")
@@ -64,10 +65,10 @@ public class MatchLineup {
 	@JsonProperty("type")
 	private String type;
 	@JsonIgnore
-	private final Map<String, Object> additionalProperties = new HashMap<String, Object>();
+	private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+
 
 	/**
-	 *
 	 * @return
 	 * The teamId
 	 */
@@ -82,12 +83,14 @@ public class MatchLineup {
 	 * The team_id
 	 */
 	@JsonProperty("team_id")
-	public void setTeamId(final Integer teamId) {
+	public void setTeamId(Integer teamId) {
 		this.teamId = teamId;
 	}
+
 	/**
 	 *
-	 * @return The playerId
+	 * @return
+	 * The playerId
 	 */
 	@JsonProperty("player_id")
 	public Integer getPlayerId() {
@@ -97,16 +100,17 @@ public class MatchLineup {
 	/**
 	 *
 	 * @param playerId
-	 *            The player_id
+	 * The player_id
 	 */
 	@JsonProperty("player_id")
-	public void setPlayerId(final Integer playerId) {
+	public void setPlayerId(Integer playerId) {
 		this.playerId = playerId;
 	}
 
 	/**
 	 *
-	 * @return The playerName
+	 * @return
+	 * The playerName
 	 */
 	@JsonProperty("player_name")
 	public String getPlayerName() {
@@ -116,16 +120,17 @@ public class MatchLineup {
 	/**
 	 *
 	 * @param playerName
-	 *            The player_name
+	 * The player_name
 	 */
 	@JsonProperty("player_name")
-	public void setPlayerName(final String playerName) {
+	public void setPlayerName(String playerName) {
 		this.playerName = playerName;
 	}
 
 	/**
 	 *
-	 * @return The position
+	 * @return
+	 * The position
 	 */
 	@JsonProperty("position")
 	public String getPosition() {
@@ -135,16 +140,17 @@ public class MatchLineup {
 	/**
 	 *
 	 * @param position
-	 *            The position
+	 * The position
 	 */
 	@JsonProperty("position")
-	public void setPosition(final String position) {
+	public void setPosition(String position) {
 		this.position = position;
 	}
 
 	/**
 	 *
-	 * @return The shirtNumber
+	 * @return
+	 * The shirtNumber
 	 */
 	@JsonProperty("shirt_number")
 	public Integer getShirtNumber() {
@@ -154,16 +160,17 @@ public class MatchLineup {
 	/**
 	 *
 	 * @param shirtNumber
-	 *            The shirt_number
+	 * The shirt_number
 	 */
 	@JsonProperty("shirt_number")
-	public void setShirtNumber(final Integer shirtNumber) {
+	public void setShirtNumber(Integer shirtNumber) {
 		this.shirtNumber = shirtNumber;
 	}
 
 	/**
 	 *
-	 * @return The assists
+	 * @return
+	 * The assists
 	 */
 	@JsonProperty("assists")
 	public Integer getAssists() {
@@ -173,16 +180,17 @@ public class MatchLineup {
 	/**
 	 *
 	 * @param assists
-	 *            The assists
+	 * The assists
 	 */
 	@JsonProperty("assists")
-	public void setAssists(final Integer assists) {
+	public void setAssists(Integer assists) {
 		this.assists = assists;
 	}
 
 	/**
 	 *
-	 * @return The foulsCommited
+	 * @return
+	 * The foulsCommited
 	 */
 	@JsonProperty("fouls_commited")
 	public Integer getFoulsCommited() {
@@ -192,16 +200,17 @@ public class MatchLineup {
 	/**
 	 *
 	 * @param foulsCommited
-	 *            The fouls_commited
+	 * The fouls_commited
 	 */
 	@JsonProperty("fouls_commited")
-	public void setFoulsCommited(final Integer foulsCommited) {
+	public void setFoulsCommited(Integer foulsCommited) {
 		this.foulsCommited = foulsCommited;
 	}
 
 	/**
 	 *
-	 * @return The foulsDrawn
+	 * @return
+	 * The foulsDrawn
 	 */
 	@JsonProperty("fouls_drawn")
 	public Integer getFoulsDrawn() {
@@ -211,16 +220,17 @@ public class MatchLineup {
 	/**
 	 *
 	 * @param foulsDrawn
-	 *            The fouls_drawn
+	 * The fouls_drawn
 	 */
 	@JsonProperty("fouls_drawn")
-	public void setFoulsDrawn(final Integer foulsDrawn) {
+	public void setFoulsDrawn(Integer foulsDrawn) {
 		this.foulsDrawn = foulsDrawn;
 	}
 
 	/**
 	 *
-	 * @return The goals
+	 * @return
+	 * The goals
 	 */
 	@JsonProperty("goals")
 	public Integer getGoals() {
@@ -230,16 +240,17 @@ public class MatchLineup {
 	/**
 	 *
 	 * @param goals
-	 *            The goals
+	 * The goals
 	 */
 	@JsonProperty("goals")
-	public void setGoals(final Integer goals) {
+	public void setGoals(Integer goals) {
 		this.goals = goals;
 	}
 
 	/**
 	 *
-	 * @return The offsides
+	 * @return
+	 * The offsides
 	 */
 	@JsonProperty("offsides")
 	public Integer getOffsides() {
@@ -249,16 +260,17 @@ public class MatchLineup {
 	/**
 	 *
 	 * @param offsides
-	 *            The offsides
+	 * The offsides
 	 */
 	@JsonProperty("offsides")
-	public void setOffsides(final Integer offsides) {
+	public void setOffsides(Integer offsides) {
 		this.offsides = offsides;
 	}
 
 	/**
 	 *
-	 * @return The missedPenalties
+	 * @return
+	 * The missedPenalties
 	 */
 	@JsonProperty("missed_penalties")
 	public Integer getMissedPenalties() {
@@ -268,16 +280,17 @@ public class MatchLineup {
 	/**
 	 *
 	 * @param missedPenalties
-	 *            The missed_penalties
+	 * The missed_penalties
 	 */
 	@JsonProperty("missed_penalties")
-	public void setMissedPenalties(final Integer missedPenalties) {
+	public void setMissedPenalties(Integer missedPenalties) {
 		this.missedPenalties = missedPenalties;
 	}
 
 	/**
 	 *
-	 * @return The scoredPenalties
+	 * @return
+	 * The scoredPenalties
 	 */
 	@JsonProperty("scored_penalties")
 	public Integer getScoredPenalties() {
@@ -287,16 +300,17 @@ public class MatchLineup {
 	/**
 	 *
 	 * @param scoredPenalties
-	 *            The scored_penalties
+	 * The scored_penalties
 	 */
 	@JsonProperty("scored_penalties")
-	public void setScoredPenalties(final Integer scoredPenalties) {
+	public void setScoredPenalties(Integer scoredPenalties) {
 		this.scoredPenalties = scoredPenalties;
 	}
 
 	/**
 	 *
-	 * @return The posx
+	 * @return
+	 * The posx
 	 */
 	@JsonProperty("posx")
 	public Integer getPosx() {
@@ -306,16 +320,17 @@ public class MatchLineup {
 	/**
 	 *
 	 * @param posx
-	 *            The posx
+	 * The posx
 	 */
 	@JsonProperty("posx")
-	public void setPosx(final Integer posx) {
+	public void setPosx(Integer posx) {
 		this.posx = posx;
 	}
 
 	/**
 	 *
-	 * @return The posy
+	 * @return
+	 * The posy
 	 */
 	@JsonProperty("posy")
 	public Integer getPosy() {
@@ -325,16 +340,17 @@ public class MatchLineup {
 	/**
 	 *
 	 * @param posy
-	 *            The posy
+	 * The posy
 	 */
 	@JsonProperty("posy")
-	public void setPosy(final Integer posy) {
+	public void setPosy(Integer posy) {
 		this.posy = posy;
 	}
 
 	/**
 	 *
-	 * @return The redcards
+	 * @return
+	 * The redcards
 	 */
 	@JsonProperty("redcards")
 	public Integer getRedcards() {
@@ -344,16 +360,17 @@ public class MatchLineup {
 	/**
 	 *
 	 * @param redcards
-	 *            The redcards
+	 * The redcards
 	 */
 	@JsonProperty("redcards")
-	public void setRedcards(final Integer redcards) {
+	public void setRedcards(Integer redcards) {
 		this.redcards = redcards;
 	}
 
 	/**
 	 *
-	 * @return The saves
+	 * @return
+	 * The saves
 	 */
 	@JsonProperty("saves")
 	public Integer getSaves() {
@@ -363,17 +380,17 @@ public class MatchLineup {
 	/**
 	 *
 	 * @param saves
-	 *            The saves
+	 * The saves
 	 */
 	@JsonProperty("saves")
-	public void setSaves(final Integer saves) {
+	public void setSaves(Integer saves) {
 		this.saves = saves;
 	}
 
 	/**
 	 *
-	 * @return The shotsOnTarget
-	 */
+	 * @return
+     */
 	@JsonProperty("shots_on_target")
 	public Integer getShotsOnTarget() {
 		return shotsOnTarget;
@@ -382,8 +399,7 @@ public class MatchLineup {
 	/**
 	 *
 	 * @param shotsOnTarget
-	 *            The shots_on_target
-	 */
+     */
 	@JsonProperty("shots_on_target")
 	public void setShotsOnTarget(final Integer shotsOnTarget) {
 		this.shotsOnTarget = shotsOnTarget;
@@ -427,7 +443,8 @@ public class MatchLineup {
 
 	/**
 	 *
-	 * @return The shotsTotal
+	 * @return
+	 * The shotsTotal
 	 */
 	@JsonProperty("shots_total")
 	public Integer getShotsTotal() {
@@ -437,16 +454,17 @@ public class MatchLineup {
 	/**
 	 *
 	 * @param shotsTotal
-	 *            The shots_total
+	 * The shots_total
 	 */
 	@JsonProperty("shots_total")
-	public void setShotsTotal(final Integer shotsTotal) {
+	public void setShotsTotal(Integer shotsTotal) {
 		this.shotsTotal = shotsTotal;
 	}
 
 	/**
 	 *
-	 * @return The yellowcards
+	 * @return
+	 * The yellowcards
 	 */
 	@JsonProperty("yellowcards")
 	public Integer getYellowcards() {
@@ -456,16 +474,17 @@ public class MatchLineup {
 	/**
 	 *
 	 * @param yellowcards
-	 *            The yellowcards
+	 * The yellowcards
 	 */
 	@JsonProperty("yellowcards")
-	public void setYellowcards(final Integer yellowcards) {
+	public void setYellowcards(Integer yellowcards) {
 		this.yellowcards = yellowcards;
 	}
 
 	/**
 	 *
-	 * @return The type
+	 * @return
+	 * The type
 	 */
 	@JsonProperty("type")
 	public String getType() {
@@ -475,21 +494,21 @@ public class MatchLineup {
 	/**
 	 *
 	 * @param type
-	 *            The type
+	 * The type
 	 */
 	@JsonProperty("type")
-	public void setType(final String type) {
+	public void setType(String type) {
 		this.type = type;
 	}
 
 	@JsonAnyGetter
 	public Map<String, Object> getAdditionalProperties() {
-		return additionalProperties;
+		return this.additionalProperties;
 	}
 
 	@JsonAnySetter
-	public void setAdditionalProperty(final String name, final Object value) {
-		additionalProperties.put(name, value);
+	public void setAdditionalProperty(String name, Object value) {
+		this.additionalProperties.put(name, value);
 	}
 
 }

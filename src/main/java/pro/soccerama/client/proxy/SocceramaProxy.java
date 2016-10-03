@@ -6,8 +6,9 @@ import java.util.concurrent.TimeUnit;
  * Created by kevin on 21/05/2016.
  */
 public abstract class SocceramaProxy {
+	public static final String API_URL = "https://api.soccerama.pro/";
 	public static final String COMMON_URL_PARAMS = "?api_token={api_token}&include={includes}";
-	public static final String VERSION = "v1.1";
+	public static final String VERSION = "v1.2";
 
 	private static final double SECOND_IN_MILLISECOND = 1000.0;
 	private static final double HOUR_IN_SECOND = 3600.0;
@@ -30,7 +31,6 @@ public abstract class SocceramaProxy {
 				e.printStackTrace();
 			}
 
-			System.out.println(System.currentTimeMillis());
 			lastCall = System.currentTimeMillis();
 			notifyAll();
 			return;

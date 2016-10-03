@@ -1,24 +1,23 @@
 package pro.soccerama.client.proxy;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import com.mashape.unirest.http.HttpResponse;
-
 import pro.soccerama.client.bean.entity.Country;
 import pro.soccerama.client.bean.structure.CountriesResponse;
 import pro.soccerama.client.exception.HaveToDefineValidIdException;
 import pro.soccerama.client.exception.NotFoundException;
 import pro.soccerama.client.tools.SocceramaRest;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 /**
  * Created by kevin on 28/05/2016.
  */
 public class CountryProxy extends SocceramaProxy {
 
-    private static final String BASE_URL = "https://api.soccerama.pro/"+SocceramaProxy.VERSION+"/countries";
+    private static final String BASE_URL = SocceramaProxy.API_URL + SocceramaProxy.VERSION + "/countries";
     private static final String BY_ID_URL = BASE_URL + "/{id}";
     private static CountryProxy INSTANCE;
 
@@ -52,7 +51,9 @@ public class CountryProxy extends SocceramaProxy {
      * Liste de toutes les competitions autorisées avec les relations définies
      */
     public List<Country> findAll(final CountryProxyParams params) {
-        params.setCountryId(null);
+        if(null != params) {
+            params.setCountryId(null);
+        }
         return find(BASE_URL, params);
     }
 
@@ -72,7 +73,7 @@ public class CountryProxy extends SocceramaProxy {
 
         final HttpResponse<CountriesResponse> httpResponse = SocceramaRest.get(url, paramsMap, CountriesResponse.class);
         final CountriesResponse body = httpResponse.getBody();
-        if(body != null){
+        if (body != null) {
             response.addAll(body.getData());
         }
 

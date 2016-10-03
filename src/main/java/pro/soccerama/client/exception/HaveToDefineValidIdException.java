@@ -5,6 +5,11 @@ package pro.soccerama.client.exception;
  */
 public class HaveToDefineValidIdException extends SocceramaClientRuntimeException {
 
+	/**
+	 *
+	 */
+	private static final long serialVersionUID = -3880033916288895155L;
+
 	public HaveToDefineValidIdException(String string) {
 		super();
 	}
@@ -13,8 +18,7 @@ public class HaveToDefineValidIdException extends SocceramaClientRuntimeExceptio
 		super();
 	}
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -3880033916288895155L;
+	public HaveToDefineValidIdException(Integer playerId) {
+		super();
+	}
 }

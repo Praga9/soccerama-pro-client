@@ -1,21 +1,20 @@
 package pro.soccerama.client.proxy;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import com.mashape.unirest.http.HttpResponse;
-
 import pro.soccerama.client.bean.entity.Competition;
 import pro.soccerama.client.bean.structure.CompetitionsResponse;
 import pro.soccerama.client.exception.HaveToDefineValidIdException;
 import pro.soccerama.client.exception.NotFoundException;
 import pro.soccerama.client.tools.SocceramaRest;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 public class CompetitionProxy extends SocceramaProxy {
 
-	private static final String BASE_URL = "https://api.soccerama.pro/"+SocceramaProxy.VERSION+"/competitions";
+	private static final String BASE_URL = SocceramaProxy.API_URL+SocceramaProxy.VERSION+"/competitions";
 	private static final String BY_ID_URL = BASE_URL + "/{id}";
 	private static CompetitionProxy INSTANCE;
 
@@ -49,7 +48,9 @@ public class CompetitionProxy extends SocceramaProxy {
 	 * Liste de toutes les competitions autorisées avec les relations définies
 	 */
 	public List<Competition> findAll(final CompetitionProxyParams params) {
-		params.setCompetitionId(null);
+		if(null != params) {
+			params.setCompetitionId(null);
+		}
 		return find(BASE_URL, params);
 	}
 

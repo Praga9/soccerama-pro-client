@@ -16,7 +16,7 @@ import pro.soccerama.client.tools.SocceramaRest;
  */
 public class StandingProxy extends SocceramaProxy {
 
-	private static final String BASE_URL = "https://api.soccerama.pro/" + SocceramaProxy.VERSION + "/standings";
+	private static final String BASE_URL = SocceramaProxy.API_URL + SocceramaProxy.VERSION + "/standings";
 	private static final String BY_SEASON_URL = BASE_URL + "/season/{seasonId}";
 
 	private static StandingProxy INSTANCE;
