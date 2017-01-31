@@ -16,7 +16,7 @@ import pro.soccerama.client.bean.structure.*;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Generated("org.jsonschema2pojo")
-@JsonPropertyOrder({ "id", "home_team_id", "away_team_id", "home_score", "away_score", "home_score_penalties",
+@JsonPropertyOrder({ "id", "weather", "home_team_id", "away_team_id", "home_score", "away_score", "home_score_penalties",
 	"away_score_penalties", "formation", "date_time_tba", "spectators", "starting_date", "starting_time", "status",
 	"minute", "extra_time", "injury_time", "referee_id", "competition_id", "venue_id", "season_id", "round_id", "stage_id", "aggregate", "homeTeam",
 	"awayTeam", "venue", "events", "lineup", "homeStats", "awayStats", "competition", "season", "commentaries", "weather", "temperature", "odds", "videos" })
@@ -24,6 +24,8 @@ public class Match {
 
 	@JsonProperty("id")
 	private Integer id;
+	@JsonProperty("weather")
+	private Weather weather;
 	@JsonProperty("ht_score")
 	private String htScore;
 	@JsonProperty("ft_score")
@@ -96,8 +98,6 @@ public class Match {
 	private Season season;
 	@JsonProperty("commentaries")
 	private MatchCommentaries commentaries;
-	@JsonProperty("weather")
-	private String weather;
 	@JsonProperty("temperature")
 	private String temperature;
 	@JsonProperty("odds")
@@ -125,6 +125,24 @@ public class Match {
 	@JsonProperty("id")
 	public void setId(final Integer id) {
 		this.id = id;
+	}
+
+	/**
+	 *
+	 * @param weather
+	 */
+	@JsonProperty("weather")
+	public void setWeather(Weather weather) {
+		this.weather = weather;
+	}
+
+	/**
+	 *
+	 * @return
+	 */
+	@JsonProperty("weather")
+	public Weather getWeather() {
+		return weather;
 	}
 
 	/**
@@ -795,16 +813,6 @@ public class Match {
 	@JsonProperty("referee_id")
 	public void setRefereeId(Integer refereeId) {
 		this.refereeId = refereeId;
-	}
-
-	@JsonProperty("weather")
-	public String getWeather() {
-		return weather;
-	}
-
-	@JsonProperty("weather")
-	public void setWeather(String weather) {
-		this.weather = weather;
 	}
 
 	@JsonProperty("temperature")
