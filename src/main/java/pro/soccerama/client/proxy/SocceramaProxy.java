@@ -15,15 +15,13 @@ public abstract class SocceramaProxy {
 	private static final double CALL_BY_HOUR = 1000.0;
 	private static final double TIME_BETWEEN_TWO_CALLS = Math.ceil(HOUR_IN_SECOND / CALL_BY_HOUR * SECOND_IN_MILLISECOND);
 
-	private static long lastCall = 0;
-
 	/**
 	 * Permet de respecter le delai entre chaque d'appel du end point
 	 */
-	protected void waitBeforeNextCall() {
+	protected long waitBeforeNextCall(long lastProxyCall) {
 		synchronized (this) {
 			try {
-				while (System.currentTimeMillis() - lastCall <= TIME_BETWEEN_TWO_CALLS) {
+				while (System.currentTimeMillis() - lastProxyCall <= TIME_BETWEEN_TWO_CALLS) {
 					TimeUnit.MILLISECONDS.sleep(100);
 
 				}
@@ -31,9 +29,8 @@ public abstract class SocceramaProxy {
 				e.printStackTrace();
 			}
 
-			lastCall = System.currentTimeMillis();
 			notifyAll();
-			return;
+			return System.currentTimeMillis();
 		}
 	}
 }

@@ -1,14 +1,9 @@
 package pro.soccerama.client.proxy;
 
 import com.mashape.unirest.http.HttpResponse;
-import pro.soccerama.client.bean.entity.Match;
-import pro.soccerama.client.bean.entity.Team;
 import pro.soccerama.client.bean.entity.Video;
-import pro.soccerama.client.bean.structure.TeamMatches;
-import pro.soccerama.client.bean.structure.TeamsResponse;
 import pro.soccerama.client.bean.structure.VideosResponse;
 import pro.soccerama.client.exception.HaveToDefineValidIdException;
-import pro.soccerama.client.exception.NotFoundException;
 import pro.soccerama.client.tools.SocceramaRest;
 
 import java.util.ArrayList;
@@ -25,6 +20,7 @@ public class VideoProxy extends SocceramaProxy {
 
 
 	private static VideoProxy INSTANCE;
+	private long lastVideoProxyCall = 0;
 
 	private VideoProxy() {
 		// Hide constructor
@@ -78,7 +74,7 @@ public class VideoProxy extends SocceramaProxy {
 	 */
 	private List<Video> findResults(final String url, final VideoProxyParams params) {
 
-		waitBeforeNextCall();
+		lastVideoProxyCall = waitBeforeNextCall(lastVideoProxyCall);
 
 		final Map<String, String> paramsMap = new HashMap<>();
 		if (params != null) {

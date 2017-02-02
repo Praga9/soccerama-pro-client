@@ -1,15 +1,14 @@
 package pro.soccerama.client.proxy;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import com.mashape.unirest.http.HttpResponse;
-
 import pro.soccerama.client.bean.entity.MatchComment;
 import pro.soccerama.client.bean.structure.MatchCommentResponse;
 import pro.soccerama.client.exception.HaveToDefineValidIdException;
 import pro.soccerama.client.tools.SocceramaRest;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Proxy Matchs
@@ -19,6 +18,7 @@ public class MatchCommentProxy extends SocceramaProxy {
     private static final String BASE_URL = SocceramaProxy.API_URL + SocceramaProxy.VERSION + "/commentaries/match";
     private static final String BY_ID_URL = BASE_URL + "/{matchId}";
     private static MatchCommentProxy INSTANCE;
+    private long lastMatchCommentProxyCall = 0;
 
     private MatchCommentProxy() {
         // Hide constructor
@@ -66,7 +66,7 @@ public class MatchCommentProxy extends SocceramaProxy {
      */
     private List<MatchComment> find(final String url, final MatchCommentProxyParams params) {
 
-        waitBeforeNextCall();
+        lastMatchCommentProxyCall = waitBeforeNextCall(lastMatchCommentProxyCall);
 
         final Map<String, String> paramsMap = new HashMap<>();
         if (params != null) {

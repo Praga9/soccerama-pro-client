@@ -1,12 +1,6 @@
 package pro.soccerama.client.proxy;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import com.mashape.unirest.http.HttpResponse;
-
 import pro.soccerama.client.bean.entity.Match;
 import pro.soccerama.client.bean.entity.Team;
 import pro.soccerama.client.bean.structure.TeamMatches;
@@ -14,6 +8,11 @@ import pro.soccerama.client.bean.structure.TeamsResponse;
 import pro.soccerama.client.exception.HaveToDefineValidIdException;
 import pro.soccerama.client.exception.NotFoundException;
 import pro.soccerama.client.tools.SocceramaRest;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Proxy Teams
@@ -28,6 +27,7 @@ public class TeamProxy extends SocceramaProxy {
 
 
 	private static TeamProxy INSTANCE;
+	private long lastTeamProxyCall = 0;
 
 	private TeamProxy() {
 		// Hide constructor
@@ -134,7 +134,7 @@ public class TeamProxy extends SocceramaProxy {
 	 */
 	private List<Match> findMatches(final String url, final TeamProxyParams params) {
 
-		waitBeforeNextCall();
+		lastTeamProxyCall = waitBeforeNextCall(lastTeamProxyCall);
 
 		final Map<String, String> paramsMap = new HashMap<>();
 		if (params != null) {
@@ -165,7 +165,7 @@ public class TeamProxy extends SocceramaProxy {
 	 */
 	private List<Team> findResults(final String url, final TeamProxyParams params) {
 
-		waitBeforeNextCall();
+		lastTeamProxyCall = waitBeforeNextCall(lastTeamProxyCall);
 
 		final Map<String, String> paramsMap = new HashMap<>();
 		if (params != null) {
@@ -195,7 +195,7 @@ public class TeamProxy extends SocceramaProxy {
 	 */
 	private Team findUnique(final String url, final TeamProxyParams params) {
 
-		waitBeforeNextCall();
+		lastTeamProxyCall = waitBeforeNextCall(lastTeamProxyCall);
 
 		final Map<String, String> paramsMap = new HashMap<>();
 		if (params != null) {

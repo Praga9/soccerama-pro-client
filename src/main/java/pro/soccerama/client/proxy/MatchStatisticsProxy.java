@@ -1,11 +1,11 @@
 package pro.soccerama.client.proxy;
 
+import pro.soccerama.client.bean.entity.MatchTeamStats;
+import pro.soccerama.client.exception.HaveToDefineValidIdException;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import pro.soccerama.client.bean.entity.MatchTeamStats;
-import pro.soccerama.client.exception.HaveToDefineValidIdException;
 
 /**
  * Proxy Teams
@@ -16,6 +16,7 @@ public class MatchStatisticsProxy extends SocceramaProxy {
 	private static final String BY_MATCH_URL = BASE_URL + "/match/{matchId}";
 
 	private static MatchStatisticsProxy INSTANCE;
+	private long lastMatchStatisticsProxyCall = 0;
 
 	private MatchStatisticsProxy() {
 		// Hide constructor
@@ -67,7 +68,7 @@ public class MatchStatisticsProxy extends SocceramaProxy {
 	 */
 	private List<MatchTeamStats> findResults(final String url, final MatchStatisticsProxyParams params) {
 
-		waitBeforeNextCall();
+		lastMatchStatisticsProxyCall = waitBeforeNextCall(lastMatchStatisticsProxyCall);
 
 		final Map<String, String> paramsMap = new HashMap<>();
 		if (params != null) {

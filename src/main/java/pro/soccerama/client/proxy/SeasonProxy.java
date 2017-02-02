@@ -19,6 +19,7 @@ public class SeasonProxy extends SocceramaProxy {
     private static final String BASE_URL = SocceramaProxy.API_URL + SocceramaProxy.VERSION + "/seasons";
     private static final String BY_ID_URL = BASE_URL + "/{id}";
     private static SeasonProxy INSTANCE;
+    private long lastSeasonProxyCall = 0;
 
     private SeasonProxy() {
         // Hide constructor
@@ -57,7 +58,7 @@ public class SeasonProxy extends SocceramaProxy {
 
     private List<Season> find(final String url, final SeasonProxyParams params) {
 
-        waitBeforeNextCall();
+        lastSeasonProxyCall = waitBeforeNextCall(lastSeasonProxyCall);
 
         final Map<String, String> paramsMap = new HashMap<>();
         if (params != null) {
@@ -94,7 +95,7 @@ public class SeasonProxy extends SocceramaProxy {
      */
     public Season findOne(final SeasonProxyParams params) {
 
-        waitBeforeNextCall();
+        lastSeasonProxyCall = waitBeforeNextCall(lastSeasonProxyCall);
 
         final Map<String, String> paramsMap = new HashMap<>();
         if (params != null) {

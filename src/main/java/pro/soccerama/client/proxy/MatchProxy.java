@@ -7,7 +7,6 @@ import pro.soccerama.client.exception.HaveToDefineValidIdException;
 import pro.soccerama.client.exception.NotFoundException;
 import pro.soccerama.client.tools.SocceramaRest;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -21,6 +20,7 @@ public class MatchProxy extends SocceramaProxy {
     private static final String BASE_URL = SocceramaProxy.API_URL + SocceramaProxy.VERSION + "/matches";
     private static final String BY_ID_URL = BASE_URL + "/{id}";
     private static MatchProxy INSTANCE;
+    private long lastMatchProxyCall = 0;
 
     private MatchProxy() {
         // Hide constructor
@@ -46,7 +46,7 @@ public class MatchProxy extends SocceramaProxy {
      */
     private Match find(final String url, final MatchProxyParams params) {
 
-        waitBeforeNextCall();
+        lastMatchProxyCall = waitBeforeNextCall(lastMatchProxyCall);
 
         final Map<String, String> paramsMap = new HashMap<>();
         if (params != null) {

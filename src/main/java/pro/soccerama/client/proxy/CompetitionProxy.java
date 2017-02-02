@@ -18,6 +18,8 @@ public class CompetitionProxy extends SocceramaProxy {
 	private static final String BY_ID_URL = BASE_URL + "/{id}";
 	private static CompetitionProxy INSTANCE;
 
+	private long lastCompetitionProxyCall = 0;
+
 	private CompetitionProxy() {
 		// Hide constructor
 	}
@@ -56,7 +58,7 @@ public class CompetitionProxy extends SocceramaProxy {
 
 	private List<Competition> find(final String url, final CompetitionProxyParams params) {
 
-		waitBeforeNextCall();
+		lastCompetitionProxyCall = waitBeforeNextCall(lastCompetitionProxyCall);
 
 		final List<Competition> response = new ArrayList<>();
 
