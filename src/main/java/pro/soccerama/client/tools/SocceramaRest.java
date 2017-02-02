@@ -27,7 +27,7 @@ public class SocceramaRest {
 		final GetRequest getRequest = Unirest.get(baseUrl + SocceramaProxy.COMMON_URL_PARAMS);
 
 		config(getRequest, params);
-		System.out.println("Soccerama call : " + getRequest.getUrl());
+		//System.out.println("Soccerama call : " + getRequest.getUrl());
 
 		try {
 			return getRequest.asObject(clazz);
@@ -46,7 +46,6 @@ public class SocceramaRest {
 
         if (params != null && !params.isEmpty()) {
             for (Map.Entry<String, String> param : params.entrySet()) {
-                System.out.println(param.getKey()+":" +param.getValue());
                 httpRequest.routeParam(param.getKey(), param.getValue());
             }
         } else {
