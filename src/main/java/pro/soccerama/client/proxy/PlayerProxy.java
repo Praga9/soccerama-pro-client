@@ -21,6 +21,7 @@ public class PlayerProxy extends SocceramaProxy {
 	private static final String BY_TEAM_URL = BASE_URL + "/team/{teamId}";
 
 	private static PlayerProxy INSTANCE;
+	private long lastPlayerProxyCall = 0;
 
 	private PlayerProxy() {
 		// Hide constructor
@@ -46,7 +47,7 @@ public class PlayerProxy extends SocceramaProxy {
 	 */
 	private Player findUnique(final String url, final PlayerProxyParams params) {
 
-		waitBeforeNextCall();
+		lastPlayerProxyCall = waitBeforeNextCall(lastPlayerProxyCall);
 
 		final Map<String, String> paramsMap = new HashMap<>();
 		if (params != null) {
@@ -67,7 +68,7 @@ public class PlayerProxy extends SocceramaProxy {
 	 */
 	private List<Player> findResults(final String url, final PlayerProxyParams params) {
 
-		waitBeforeNextCall();
+		lastPlayerProxyCall = waitBeforeNextCall(lastPlayerProxyCall);
 
 		final Map<String, String> paramsMap = new HashMap<>();
 		if (params != null) {

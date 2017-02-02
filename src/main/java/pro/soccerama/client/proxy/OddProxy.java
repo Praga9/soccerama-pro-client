@@ -1,17 +1,16 @@
 package pro.soccerama.client.proxy;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import com.mashape.unirest.http.HttpResponse;
-
 import pro.soccerama.client.bean.structure.OddBookmaker;
 import pro.soccerama.client.bean.structure.OddsResponse;
 import pro.soccerama.client.exception.HaveToDefineValidDateException;
 import pro.soccerama.client.exception.HaveToDefineValidIdException;
 import pro.soccerama.client.tools.SocceramaRest;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Proxy Teams
@@ -24,6 +23,7 @@ public class OddProxy extends SocceramaProxy {
 	private static final String BY_BOOKMAKER_AND_DATE_URL = BASE_URL + "/bookmaker/{bookmakerId}/date/{date}";
 
 	private static OddProxy INSTANCE;
+	private long lastOddProxyCall = 0;
 
 	private OddProxy() {
 		// Hide constructor
@@ -128,7 +128,7 @@ public class OddProxy extends SocceramaProxy {
      */
 	private List<OddBookmaker> findResults(final String url, final OddProxyParams params) {
 
-		waitBeforeNextCall();
+		lastOddProxyCall = waitBeforeNextCall(lastOddProxyCall);
 
 		final List<OddBookmaker> response = new ArrayList<>();
 

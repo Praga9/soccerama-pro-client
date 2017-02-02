@@ -20,6 +20,7 @@ public class MatchEventProxy extends SocceramaProxy {
 
 
     private static MatchEventProxy INSTANCE;
+    private long lastMatchEventProxyCall = 0;
 
     private MatchEventProxy() {
         // Hide constructor
@@ -73,7 +74,7 @@ public class MatchEventProxy extends SocceramaProxy {
      */
     private List<MatchEvent> findResults(final String url, final MatchEventProxyParams params) {
 
-        waitBeforeNextCall();
+        lastMatchEventProxyCall = waitBeforeNextCall(lastMatchEventProxyCall);
 
         final Map<String, String> paramsMap = new HashMap<>();
         if (params != null) {

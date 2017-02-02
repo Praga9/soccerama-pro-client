@@ -1,12 +1,6 @@
 package pro.soccerama.client.proxy;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import com.mashape.unirest.http.HttpResponse;
-
 import org.apache.log4j.Logger;
 import pro.soccerama.client.bean.entity.Match;
 import pro.soccerama.client.bean.structure.LivescoreResponse;
@@ -14,6 +8,11 @@ import pro.soccerama.client.exception.HaveToDefineValidDateException;
 import pro.soccerama.client.exception.HaveToDefineValidIdException;
 import pro.soccerama.client.exception.NotFoundException;
 import pro.soccerama.client.tools.SocceramaRest;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Proxy Matchs
@@ -28,6 +27,7 @@ public class LivescoreProxy extends SocceramaProxy {
     private static final Logger LOGGER = Logger.getLogger(LivescoreProxy.class);
 
     private static LivescoreProxy INSTANCE;
+    private long lastLivescoreProxyCall = 0;
 
     private LivescoreProxy() {
         // Hide constructor
@@ -53,7 +53,7 @@ public class LivescoreProxy extends SocceramaProxy {
      */
     private Match findOne(final String url, final LivescoreProxyParams params) {
 
-        waitBeforeNextCall();
+        lastLivescoreProxyCall = waitBeforeNextCall(lastLivescoreProxyCall);
 
         final Map<String, String> paramsMap = new HashMap<>();
         if (params != null) {
@@ -82,7 +82,7 @@ public class LivescoreProxy extends SocceramaProxy {
      */
     private List<Match> find(final String url, final LivescoreProxyParams params) {
 
-        waitBeforeNextCall();
+        lastLivescoreProxyCall = waitBeforeNextCall(lastLivescoreProxyCall);
 
         final Map<String, String> paramsMap = new HashMap<>();
         if (params != null) {

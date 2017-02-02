@@ -1,15 +1,14 @@
 package pro.soccerama.client.proxy;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import com.mashape.unirest.http.HttpResponse;
-
 import pro.soccerama.client.bean.entity.Standing;
 import pro.soccerama.client.bean.structure.StandingResponse;
 import pro.soccerama.client.exception.HaveToDefineValidIdException;
 import pro.soccerama.client.tools.SocceramaRest;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Proxy Teams
@@ -20,6 +19,7 @@ public class StandingProxy extends SocceramaProxy {
 	private static final String BY_SEASON_URL = BASE_URL + "/season/{seasonId}";
 
 	private static StandingProxy INSTANCE;
+	private long lastStandingProxyCall = 0;
 
 	private StandingProxy() {
 		// Hide constructor
@@ -71,7 +71,7 @@ public class StandingProxy extends SocceramaProxy {
 	 */
 	private List<Standing> findResults(final String url, final StandingProxyParams params) {
 
-		waitBeforeNextCall();
+		lastStandingProxyCall = waitBeforeNextCall(lastStandingProxyCall);
 
 		final Map<String, String> paramsMap = new HashMap<>();
 		if (params != null) {

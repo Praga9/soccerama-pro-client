@@ -15,29 +15,29 @@ import java.util.Map;
  */
 public class SocceramaRest {
 
+	/**
+	 * @param baseUrl
+	 * @param params
+	 * @param clazz
+	 * @param <T>
+	 * @return
+	 */
+	public static <T> HttpResponse<T> get(final String baseUrl, final Map<String, String> params, final Class<T> clazz) {
 
-    /**
-     * @param baseUrl
-     * @param params
-     * @param clazz
-     * @param <T>
-     * @return
-     */
-    public static <T> HttpResponse<T> get(final String baseUrl, final Map<String, String> params, final Class<T> clazz) {
+		final GetRequest getRequest = Unirest.get(baseUrl + SocceramaProxy.COMMON_URL_PARAMS);
 
-        final GetRequest getRequest = Unirest.get(baseUrl + SocceramaProxy.COMMON_URL_PARAMS);
+		config(getRequest, params);
+		System.out.println("Soccerama call : " + getRequest.getUrl());
 
-        config(getRequest, params);
+		try {
+			return getRequest.asObject(clazz);
+		} catch (UnirestException ue) {
+			System.out.println("SocceramaAPIClient Exception : " + ue.getMessage());
+		}
+		return null;
+	}
 
-        try {
-            return getRequest.asObject(clazz);
-        } catch (UnirestException ue) {
-            System.out.println("SocceramaAPIClient Exception : " + ue.getMessage());
-        }
-        return null;
-    }
-
-    /**
+	/**
      * @param httpRequest
      * @param params
      */
@@ -46,6 +46,7 @@ public class SocceramaRest {
 
         if (params != null && !params.isEmpty()) {
             for (Map.Entry<String, String> param : params.entrySet()) {
+                System.out.println(param.getKey()+":" +param.getValue());
                 httpRequest.routeParam(param.getKey(), param.getValue());
             }
         } else {

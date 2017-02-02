@@ -21,6 +21,8 @@ public class CountryProxy extends SocceramaProxy {
     private static final String BY_ID_URL = BASE_URL + "/{id}";
     private static CountryProxy INSTANCE;
 
+    private long lastCountryProxyCall = 0;
+
     private CountryProxy() {
         // Hide constructor
     }
@@ -59,7 +61,7 @@ public class CountryProxy extends SocceramaProxy {
 
     private List<Country> find(final String url, final CountryProxyParams params) {
 
-        waitBeforeNextCall();
+        lastCountryProxyCall = waitBeforeNextCall(lastCountryProxyCall);
 
         final List<Country> response = new ArrayList<>();
 
