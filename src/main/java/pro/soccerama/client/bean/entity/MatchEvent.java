@@ -14,12 +14,14 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Generated("org.jsonschema2pojo")
-@JsonPropertyOrder({ "id", "minute", "extra_min", "type", "player_id", "assist_id", "team_id", "player_in_id",
+@JsonPropertyOrder({ "id", "match_id", "minute", "extra_min", "type", "player_id", "assist_id", "team_id", "player_in_id",
 	"player_out_id", "related_event_id", "player" })
 public class MatchEvent {
 
 	@JsonProperty("id")
 	private Integer id;
+	@JsonProperty("match_id")
+	private Integer matchId;
 	@JsonProperty("minute")
 	private Integer minute;
 	@JsonProperty("extra_min")
@@ -60,6 +62,24 @@ public class MatchEvent {
 	@JsonProperty("id")
 	public void setId(final Integer id) {
 		this.id = id;
+	}
+
+	/**
+	 *
+	 * @return
+	 */
+	@JsonProperty("match_id")
+	public Integer getMatchId() {
+		return matchId;
+	}
+
+	/**
+	 *
+	 * @param matchId
+	 */
+	@JsonProperty("match_id")
+	public void setMatchId(final Integer matchId) {
+		this.matchId = matchId;
 	}
 
 	/**
