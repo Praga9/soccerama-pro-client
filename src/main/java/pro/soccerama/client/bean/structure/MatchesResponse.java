@@ -14,35 +14,35 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
-import pro.soccerama.client.bean.entity.Player;
+import pro.soccerama.client.bean.entity.Match;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Generated("org.jsonschema2pojo")
 @JsonPropertyOrder({ "data" })
-public class PlayersResponse {
+public class MatchesResponse {
 
 	@JsonProperty("data")
-	private List<Player> data = new ArrayList<Player>();
+	private List<Match> data = new ArrayList<>();
 	@JsonIgnore
 	private final Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
 	/**
 	 *
-	 * @return The players
+	 * @return The data
 	 */
 	@JsonProperty("data")
-	public List<Player> getPlayers() {
+	public List<Match> getData() {
 		return data;
 	}
 
 	/**
 	 *
-	 * @param players
-	 *            The players
+	 * @param data
+	 *            The data
 	 */
 	@JsonProperty("data")
-	public void setPlayers(final List<Player> players) {
-		this.data = players;
+	public void setData(final List<Match> data) {
+		this.data = data;
 	}
 
 	@JsonAnyGetter

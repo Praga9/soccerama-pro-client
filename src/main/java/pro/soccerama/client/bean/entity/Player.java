@@ -17,7 +17,7 @@ import pro.soccerama.client.bean.structure.PlayerMatchLineups;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Generated("org.jsonschema2pojo")
-@JsonPropertyOrder({"id", "name", "nationality",
+@JsonPropertyOrder({ "id", "name", "short_number", "fullname", "nationality",
         "birth_country",
         "birth_date",
         "birth_place",
@@ -29,6 +29,10 @@ public class Player {
     private Integer id;
     @JsonProperty("name")
     private String name;
+	@JsonProperty("short_number")
+	private String shortNumber;
+	@JsonProperty("fullname")
+	private String fullName;
     @JsonProperty("nationality")
     private String nationality;
     @JsonProperty("birth_country")
@@ -85,6 +89,42 @@ public class Player {
     public void setName(final String name) {
         this.name = name;
     }
+
+	/**
+	 *
+	 * @return
+	 */
+	@JsonProperty("shirt_number")
+	public String getShortNumber() {
+		return shortNumber;
+	}
+
+	/**
+	 *
+	 * @param shortNumber
+	 */
+	@JsonProperty("shirt_number")
+	public void setShortNumber(final String shortNumber) {
+		this.shortNumber = shortNumber;
+	}
+
+	/**
+	 *
+	 * @return
+	 */
+	@JsonProperty("fullname")
+	public String getFullName() {
+		return fullName;
+	}
+
+	/**
+	 *
+	 * @param fullName
+	 */
+	@JsonProperty("fullname")
+	public void setFullName(final String fullName) {
+		this.fullName = fullName;
+	}
 
     /**
      * @return The nationality

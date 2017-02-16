@@ -11,6 +11,8 @@ import org.apache.commons.lang3.StringUtils;
 public class MatchProxyParams extends AbstractProxyParams{
 	private Integer matchId;
 	private final Set<String> relations = new HashSet<>();
+	private String rangeBegin;
+	private String rangeEnd;
 
 	/**
 	 *
@@ -46,5 +48,35 @@ public class MatchProxyParams extends AbstractProxyParams{
 	 */
 	public boolean isValidId() {
 		return matchId != null && matchId > 0;
+	}
+
+	public void setRangeBegin(final String rangeBegin) {
+		this.rangeBegin = rangeBegin;
+	}
+
+	public String getRangeBegin() {
+		return rangeBegin;
+	}
+
+	public void setRangeEnd(final String rangeEnd) {
+		this.rangeEnd = rangeEnd;
+	}
+
+	public String getRangeEnd() {
+		return rangeEnd;
+	}
+
+	/**
+	 *
+	 */
+	public boolean isValidBeginDate() {
+		return rangeBegin != null && !rangeBegin.toString().trim().isEmpty() && rangeBegin.toString().length() == 10;
+	}
+
+	/**
+	 *
+	 */
+	public boolean isValidEndDate() {
+		return rangeEnd != null && !rangeEnd.toString().trim().isEmpty() && rangeEnd.toString().length() == 10;
 	}
 }
